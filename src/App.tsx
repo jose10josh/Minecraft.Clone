@@ -5,6 +5,7 @@ import { Ground } from "./components/Ground";
 import { Fpv } from "./components/FPV";
 import { Player } from "./components/Player";
 import { Cubes } from "./components/Cubes";
+import { TextureSelector } from "./components/TextureSelector";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         </Physics>
       </Canvas>
       <div className="pointer">+</div>
+      <TextureSelector />
     </>
   );
 }

@@ -12,7 +12,7 @@ interface StoreState {
   cubes: CubeT[];
   addCube: (x: number, y: number, z: number) => void;
   removeCube: (id: string) => void;
-  // setTexture: () => void;
+  setTexture: (texture: string) => void;
   // saveWorld: () => void;
   // resertWorld: () => void;
 }
@@ -37,7 +37,9 @@ const useStore = create<StoreState>((set) => ({
       cubes: state.cubes.filter((cube) => cube.id !== id),
     }));
   },
-  // setTexture: () => {},
+  setTexture: (texture: string) => {
+    set(() => ({ texture }));
+  },
   // saveWorld: () => {},
   // resertWorld: () => {},
 }));
