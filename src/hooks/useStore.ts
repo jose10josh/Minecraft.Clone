@@ -11,7 +11,7 @@ interface StoreState {
   texture: string;
   cubes: CubeT[];
   addCube: (x: number, y: number, z: number) => void;
-  // removeCube: () => void;
+  removeCube: (id: string) => void;
   // setTexture: () => void;
   // saveWorld: () => void;
   // resertWorld: () => void;
@@ -19,13 +19,7 @@ interface StoreState {
 
 const useStore = create<StoreState>((set) => ({
   texture: "dirt",
-  cubes: [
-    {
-      id: nanoid(),
-      pos: [1, 1, 1],
-      texture: "log",
-    },
-  ],
+  cubes: [],
   addCube: (x: number, y: number, z: number) => {
     set((state) => ({
       cubes: [
@@ -38,7 +32,11 @@ const useStore = create<StoreState>((set) => ({
       ],
     }));
   },
-  // removeCube: () => {},
+  removeCube: (id: string) => {
+    set((state) => ({
+      cubes: state.cubes.filter((cube) => cube.id !== id),
+    }));
+  },
   // setTexture: () => {},
   // saveWorld: () => {},
   // resertWorld: () => {},
